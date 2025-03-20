@@ -63,13 +63,13 @@ git-fetch-with-cli = true
 ```
 cargo build -r
 ```
-现在项目根目录下会多出一个target文件夹，里面有个release文件夹，再里面有一个名为vnpyrs-chart的可执行文件，这个就是vnpyrs要调用的极速K线图表程序
+现在项目根目录下会多出一个target文件夹，里面有个release文件夹，再里面有一个名为vnpyrs-chart的可执行文件，这个就是VnpyRS要调用的极速K线图表程序
 
 ## 使用
 
 1.和vnpy一样，在家目录下建立一个名为“strategies”的文件夹，在里面新建一个名为“__init__.py”的空文件，再将包含策略的py文件放到“strategies”文件夹里。
 
-2.运行vnpyrs项目里的examples文件夹下的gui.py：
+2.运行VnpyRS项目里的examples文件夹下的gui.py：
 ```
 python gui.py
 ```
@@ -78,3 +78,5 @@ python gui.py
 ## 更新日志
 
 0.1.0：第一个发布版本(2025-3-7)
+
+0.1.1：修复当阳线、阴线、平线中有一种线不存在时，软件会崩溃的问题(2025-3-20)

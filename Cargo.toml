@@ -1,11 +1,11 @@
 [package]
 name = "vnpyrs-chart"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "A chart window for both vnpyrs and vnpy"
 repository = "https://github.com/vnpyrs/vnpyrs-chart"
 license = "MIT"
-homepage = "https://github.com/vnpyrs/vnpyrs-chart"
+homepage = "https://vnpyrs.com/"
 authors = ["Liehan Wu <vnpyrs@hotmail.com>"]
 
 [dependencies]

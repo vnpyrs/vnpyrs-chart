@@ -1077,18 +1077,26 @@ impl<'window, 'font> WgpuCtx<'window, 'font> {
                 0.0,
                 1.0,
             );
-            rpass.set_pipeline(&self.candle_bar.up_render_pipeline);
-            rpass.set_vertex_buffer(0, self.candle_bar.up_vertex_buffer.slice(..));
-            rpass.draw(0..CANDLE_VERTEX.up.len() as u32, 0..1);
-            rpass.set_pipeline(&self.candle_bar.down_render_pipeline);
-            rpass.set_vertex_buffer(0, self.candle_bar.down_vertex_buffer.slice(..));
-            rpass.draw(0..CANDLE_VERTEX.down.len() as u32, 0..1);
-            rpass.set_pipeline(&self.candle_bar.down_hl_render_pipeline);
-            rpass.set_vertex_buffer(0, self.candle_bar.down_hl_vertex_buffer.slice(..));
-            rpass.draw(0..CANDLE_VERTEX.down_hl.len() as u32, 0..1);
-            rpass.set_pipeline(&self.candle_bar.stay_render_pipeline);
-            rpass.set_vertex_buffer(0, self.candle_bar.stay_vertex_buffer.slice(..));
-            rpass.draw(0..CANDLE_VERTEX.stay.len() as u32, 0..1);
+            if CANDLE_VERTEX.up.len() > 0 {
+                rpass.set_pipeline(&self.candle_bar.up_render_pipeline);
+                rpass.set_vertex_buffer(0, self.candle_bar.up_vertex_buffer.slice(..));
+                rpass.draw(0..CANDLE_VERTEX.up.len() as u32, 0..1);
+            }
+            if CANDLE_VERTEX.down.len() > 0 {
+                rpass.set_pipeline(&self.candle_bar.down_render_pipeline);
+                rpass.set_vertex_buffer(0, self.candle_bar.down_vertex_buffer.slice(..));
+                rpass.draw(0..CANDLE_VERTEX.down.len() as u32, 0..1);
+            }
+            if CANDLE_VERTEX.down_hl.len() > 0 {
+                rpass.set_pipeline(&self.candle_bar.down_hl_render_pipeline);
+                rpass.set_vertex_buffer(0, self.candle_bar.down_hl_vertex_buffer.slice(..));
+                rpass.draw(0..CANDLE_VERTEX.down_hl.len() as u32, 0..1);
+            }
+            if CANDLE_VERTEX.stay.len() > 0 {
+                rpass.set_pipeline(&self.candle_bar.stay_render_pipeline);
+                rpass.set_vertex_buffer(0, self.candle_bar.stay_vertex_buffer.slice(..));
+                rpass.draw(0..CANDLE_VERTEX.stay.len() as u32, 0..1);
+            }
 
             //画交易对连线
             rpass.set_pipeline(&self.trade.profit_render_pipeline);
@@ -1131,15 +1139,21 @@ impl<'window, 'font> WgpuCtx<'window, 'font> {
                 0.0,
                 1.0,
             );
-            rpass.set_pipeline(&self.volume_bar.up_render_pipeline);
-            rpass.set_vertex_buffer(0, self.volume_bar.up_vertex_buffer.slice(..));
-            rpass.draw(0..VOLUME_VERTEX.up.len() as u32, 0..1);
-            rpass.set_pipeline(&self.volume_bar.down_render_pipeline);
-            rpass.set_vertex_buffer(0, self.volume_bar.down_vertex_buffer.slice(..));
-            rpass.draw(0..VOLUME_VERTEX.down.len() as u32, 0..1);
-            rpass.set_pipeline(&self.volume_bar.stay_render_pipeline);
-            rpass.set_vertex_buffer(0, self.volume_bar.stay_vertex_buffer.slice(..));
-            rpass.draw(0..VOLUME_VERTEX.stay.len() as u32, 0..1);
+            if VOLUME_VERTEX.up.len() > 0 {
+                rpass.set_pipeline(&self.volume_bar.up_render_pipeline);
+                rpass.set_vertex_buffer(0, self.volume_bar.up_vertex_buffer.slice(..));
+                rpass.draw(0..VOLUME_VERTEX.up.len() as u32, 0..1);
+            }
+            if VOLUME_VERTEX.down.len() > 0 {
+                rpass.set_pipeline(&self.volume_bar.down_render_pipeline);
+                rpass.set_vertex_buffer(0, self.volume_bar.down_vertex_buffer.slice(..));
+                rpass.draw(0..VOLUME_VERTEX.down.len() as u32, 0..1);
+            }
+            if VOLUME_VERTEX.stay.len() > 0 {
+                rpass.set_pipeline(&self.volume_bar.stay_render_pipeline);
+                rpass.set_vertex_buffer(0, self.volume_bar.stay_vertex_buffer.slice(..));
+                rpass.draw(0..VOLUME_VERTEX.stay.len() as u32, 0..1);
+            }
 
             if self.manager.right_ix - self.manager.left_ix + 1
                 <= self.chart_k.shape.width as i64 * 5
